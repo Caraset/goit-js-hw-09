@@ -57,7 +57,7 @@ function start() {
   }
 
   if (timeSelected - Date.now() <= 0) {
-    Notify.failure('Please choose a date in the future');
+    Notify.failure('Please choose a date in the future', { clickToClose: true });
     return;
   }
 
