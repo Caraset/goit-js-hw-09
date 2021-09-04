@@ -30,7 +30,6 @@ function onBtnClick(e) {
 function disableAlerter(delay, step, amount) {
   isActive = true;
   setTimeout(() => (isActive = false), Number(delay) + Number(step) * amount);
-  console.log('disableAlert: ', isActive);
 }
 
 function createPromise(position, delay) {
@@ -39,18 +38,18 @@ function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (shouldResolve) {
-        resolve(position, delay);
+        resolve({ position, delay });
       } else {
-        reject(position, delay);
+        reject({ position, delay });
       }
     }, delay);
   });
 }
 
-function onSuccess(position, delay) {
+function onSuccess({ position, delay }) {
   Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`, { clickToClose: true });
 }
 
-function onError(position, delay) {
+function onError({ position, delay }) {
   Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`, { clickToClose: true });
 }
