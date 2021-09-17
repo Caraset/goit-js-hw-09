@@ -20,7 +20,7 @@ function onBtnClick(e) {
 
   disableAlerter(delay, step, amount);
 
-  for (let i = 0; i < amount; i += 1) {
+  for (let i = 1; i < amount - 1; i += 1) {
     createPromise(i, Number(delay) + Number(step) * i)
       .then(onSuccess)
       .catch(onError);
